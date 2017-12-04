@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Day2 {
+public class Day2p1 {
 
 	public static void main(String[] args) {
 		List<Integer> differences = new ArrayList<>();

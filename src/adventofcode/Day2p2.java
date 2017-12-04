@@ -1,35 +1,39 @@
-package codeofadvent;
+package adventofcode;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Day2p1 {
+public class Day2p2 {
 
 	public static void main(String[] args) {
 		List<Integer> differences = new ArrayList<>();
 		for (String line : data) {
 			String[] lineValues = line.split(" ");
-			int largestNumberInLine = getSuperlativeValue(lineValues, true);
-			int smallestNumberInLine = getSuperlativeValue(lineValues, false);
+			int evenlyDividedValue = getEvenlyDividedValue(lineValues, true);
 
-			differences.add(largestNumberInLine - smallestNumberInLine);
+			differences.add(evenlyDividedValue);
 		}
 
 		System.out.println(differences.stream().map(d -> d.toString()).collect(Collectors.joining(" + "))
 				+ " = " + differences.stream().mapToInt(Integer::intValue).sum());
 	}
 
-	private static int getSuperlativeValue(String[] lineValues, boolean largest) {
-		Integer res = null;
+	private static int getEvenlyDividedValue(String[] lineValues, boolean largest) {
 		for (String lineValue : lineValues) {
-			Integer value = Integer.parseInt(lineValue);
-			if (res == null || (largest && value > res) || (!largest && value < res)) {
-				res = value;
+			int lineValueInt = Integer.parseInt(lineValue);
+			for (String lineValueInner : lineValues) {
+				int lineValueInnerInt = Integer.parseInt(lineValueInner);
+				if (lineValue.equals(lineValueInner)) {
+					continue;
+				}
+				if (lineValueInt % lineValueInnerInt == 0) {
+					return lineValueInt / lineValueInnerInt;
+				}
 			}
 		}
 
-		return res;
+		return 0;
 	}
 
 	private static String[] data = new String[] {

@@ -1,6 +1,6 @@
 // noprotect
 (function() {
-	var myInput = 1024;
+	var myInput = 289326;
 
 	var makeSpiral = function(input) {
 
@@ -91,7 +91,6 @@
 	};
 
 	var calculateManhattanDistance = function(source, target) {
-		var distance = 0;
 		return Math.abs(source.x - target.x) + Math.abs(source.y - target.y);
 	};
 

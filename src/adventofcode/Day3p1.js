@@ -9,10 +9,10 @@
 		var n = 1;
 
 		var setValue = function() {
-            if (x === -1) {
-              x = size - 1;
-            }
-            spiral[x][y] = n;
+			if (x === -1) {
+			  x = size - 1;
+			}
+			spiral[x][y] = n;
 			n++;
 		};
 
@@ -50,9 +50,9 @@
 		// Init spiral
 		for (var i1 = 0; i1 < size; i1++) {
 			spiral[i1] = [];
-            for (var i2 = 1; i2 < size; i2++) {
-              spiral[i1][i2] = 0;
-            }
+			for (var i2 = 1; i2 < size; i2++) {
+			  spiral[i1][i2] = 0;
+			}
 		}
 
 		if (size % 2 === 0) {
@@ -79,7 +79,7 @@
 			direction.down(size);
 		}
 
-        return spiral;
+		return spiral;
 	};
 
 	var getCoordinates = function(spiral, n) {

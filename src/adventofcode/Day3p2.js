@@ -1,6 +1,6 @@
 // noprotect
 (function() {
-	var myInput = 800;
+	var myInput = 289326;
 
 	var makeSpiral = function(input) {
 

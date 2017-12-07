@@ -2,16 +2,12 @@
 (function() {
 	var myInput = 289326;
 
-	var makeSpiral = function(input) {
+	var makeSpiralAndGetAnswer = function(input) {
 
 		var size = Math.ceil(Math.sqrt(input));
 		var spiral = [];
 		var n = 1;
 
-		var setValue = function() {
-			spiral[x][y] = n;
-		};
-		
 		var getSumOf = function(numbers) {
 			return numbers.reduce(function(total, num) {
 				return total + num;
@@ -35,11 +31,15 @@
 				getApplicableValue(x + 1, y - 1)
 			]) || 1;
 		}
+		
+		var setValue = function() {
+			n = getSumOfCoordinatesAround(x, y);
+			spiral[x][y] = n;
+		};
 
 		var direction = {
 			right: function(times) {
 				for (var i = 0; i < times; i++) {
-					n = getSumOfCoordinatesAround(x, y);
 					setValue();
 					x++;
 					if (n > input) break;
@@ -47,7 +47,6 @@
 			},
 			left: function(times) {
 				for (var i = 0; i < times; i++) {
-					n = getSumOfCoordinatesAround(x, y);
 					setValue();
 					x--;
 					if (n > input) break;
@@ -55,7 +54,6 @@
 			},
 			up: function(times) {
 				for (var i = 0; i < times; i++) {
-					n = getSumOfCoordinatesAround(x, y);
 					setValue();
 					y++;
 					if (n > input) break;
@@ -63,7 +61,6 @@
 			},
 			down: function(times) {
 				for (var i = 0; i < times; i++) {
-					n = getSumOfCoordinatesAround(x, y);
 					setValue();
 					y--;
 					if (n > input) break;
@@ -104,6 +101,6 @@
 		return n;
 	};
 	
-	console.log(makeSpiral(myInput));
+	console.log(makeSpiralAndGetAnswer(myInput));
 
 })();

@@ -5,15 +5,15 @@ export class Day4p2 {
 		const passwords = input.split('\n');
 
 		outerLoop:
-			for (const password of passwords) {
-				const words = password.split(' ');
-				for (const word of words) {
-					if (words.filter(w => this.isAnagram(w, word)).length > 1) {
-						invalidNo++;
-						continue outerLoop;
-					}
+		for (const password of passwords) {
+			const words = password.split(' ');
+			for (const word of words) {
+				if (words.filter(w => this.isAnagram(w, word)).length > 1) {
+					invalidNo++;
+					continue outerLoop;
 				}
 			}
+		}
 
 		return passwords.length - invalidNo;
 	}

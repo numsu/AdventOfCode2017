@@ -15,8 +15,8 @@ public class Day5p1 {
 		for (int i = 0;;) {
 			try {
 				int current = maze.get(i);
-				maze.set(i, ++current);
-				i += --current;
+				maze.set(i, current + 1);
+				i += current;
 				steps++;
 			} catch (IndexOutOfBoundsException e) {
 				System.out.println("Escaped! Steps: " + steps);
